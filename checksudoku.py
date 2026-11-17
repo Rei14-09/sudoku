@@ -47,22 +47,29 @@ incorrecto_repeticion_numeros = [[1, 0, 0, 0],
             [0, 0, 0, 1]]
 
 
-def is_squere(sudoku):
-    assert isinstance(sudoku,list)   
+#def is_squere(sudoku):
+ #   assert isinstance(sudoku,list)   
 
-    if not sudoku:
-        return False
-    for fila in sudoku: 
+  #  if not sudoku:
+   #     return False
+    #for fila in sudoku: 
 
-        assert isinstance(fila, list)
+     #   assert isinstance(fila, list)
         
-        if len(fila) != len(sudoku):
-            return False
+      #  if len(fila) != len(sudoku):
+       #     return False
+   # else:
+    #    return True
+
+
+def numbers_in_range(sudoku):
+
+    for fila in sudoku:
+        for number in fila:
+            if number>len(sudoku):
+                return False
     else:
         return True
-
-#def is_number(sudoku):
-
 
 #def check_sudoku(sudoku):
 
@@ -72,11 +79,15 @@ def is_squere(sudoku):
 
 if __name__=='__main__':
 
-    assert is_squere(correcto)==True
+    assert numbers_in_range(correcto)==True
+    assert numbers_in_range(incorrecto_repeticion_fila)==True
+    assert numbers_in_range(incorrecto3)==False
 
-    assert is_squere(incorrecto_repeticion_fila)==True
+    #assert is_squere(correcto)==True
 
-    assert is_squere(incorrecto_repeticion_numeros)==False
+    #assert is_squere(incorrecto_repeticion_fila)==True
+
+    #assert is_squere(incorrecto_repeticion_numeros)==False
 
     #assert check_sudoku(incorrecto_repeticion_fila)==False
     # >>> False
