@@ -62,14 +62,22 @@ incorrecto_repeticion_numeros = [[1, 0, 0, 0],
     #    return True
 
 
-def numbers_in_range(sudoku):
+#def numbers_in_range(sudoku):
+
+ #   for row in sudoku:
+  #      for number in row:
+   #         if number>len(sudoku):
+    #            return False
+    #else:
+     #   return True
+
+def check_rows(sudoku):
 
     for row in sudoku:
         for number in row:
-            if number>len(sudoku):
+            if row.count(number) > 1:
                 return False
-    else:
-        return True
+    return True
 
 
 #def check_sudoku(sudoku):
@@ -80,9 +88,13 @@ def numbers_in_range(sudoku):
 
 if __name__=='__main__':
 
-    assert numbers_in_range(correcto)==True
-    assert numbers_in_range(incorrecto_repeticion_fila)==True
-    assert numbers_in_range(incorrecto3)==False
+    assert check_rows(correcto)==True
+    assert check_rows(incorrecto_repeticion_fila)==False
+    assert check_rows(incorrecto_repeticion_columnas)==True
+
+    #assert numbers_in_range(correcto)==True
+    #assert numbers_in_range(incorrecto_repeticion_fila)==True
+    #assert numbers_in_range(incorrecto3)==False
 
     #assert is_squere(correcto)==True
 
