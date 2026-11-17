@@ -64,12 +64,13 @@ incorrecto_repeticion_numeros = [[1, 0, 0, 0],
 
 def numbers_in_range(sudoku):
 
-    for fila in sudoku:
-        for number in fila:
+    for row in sudoku:
+        for number in row:
             if number>len(sudoku):
                 return False
     else:
         return True
+
 
 #def check_sudoku(sudoku):
 
