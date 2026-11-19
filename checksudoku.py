@@ -1,4 +1,4 @@
-# Define a procedure, check_sudoku,
+# Define a procedure,check_colums,
 # that takes as input a square list
 # of lists representing an n x n
 # sudoku puzzle solution and returns the boolean
@@ -48,37 +48,49 @@ incorrecto6 = [[1, 0, 0, 0],
 
 
 
-def check_sudoku(sudoku):
+def check_colums(sudoku):
 
-    return ( is_isquare(sudoku)
-            and is_integer(sudoku)
-            and number_in_range(sudoku)
-            and check_rows(sudoku)
-            and check_colums(sudoku)
-    )
+    primeraFila = sudoku[0]
+    numeroDeFilas = len(sudoku) - 1
+
+    for numero in primeraFila:
+
+        indexFilaActual = 0
+
+        while indexFilaActual < numeroDeFilas:
+
+            indexFilaSiguiente = indexFilaActual + 1
+
+            try:
+               
+                posicionNumeroFilaSiguiente = sudoku[indexFilaSiguiente].index(numero)
+
+            except ValueError:
+                     
+                      return False
+
+            else:
+              
+                if posicionNumeroFilaSiguiente == primeraFila.index(numero):
+                      return False
+                else:
+                      indexFilaActual += 1
+
+    return True
 
 
 
 
 if __name__=='__main__':
 
-    assert check_sudoku(incorrecto_repeticion_numeros)==False
+    assert check_colums(incorrecto_repeticion_numeros)==False
     # >>> False
 
-    assert check_sudoku(correcto)==True
+    assert check_colums(correcto)==True
     # >>> True
 
-    assert check_sudoku(incorrecto2)==False
+    assert check_colums(incorrecto2)==False
     # >>> False
-
-    assert check_sudoku(incorrecto3)==False
-    # >>> False
-
-    assert check_sudoku(incorrecto4)==False
-    # >>> False
-
-    assert check_sudoku(incorrecto5)==False
-    # >>> False
-
-    assert check_sudoku(incorrecto6)==False
+    
+    assert check_colums(incorrecto3)==False
     # >>> False
