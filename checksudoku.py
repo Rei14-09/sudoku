@@ -47,36 +47,20 @@ incorrecto6 = [[1, 0, 0, 0],
             [0, 0, 0, 1]]
 
 
-def is_squere(sudoku):
-    assert isinstance(sudoku,list)   
 
-    if not sudoku:
-        return False
-    for fila in sudoku: 
+def check_sudoku(sudoku):
 
-        assert isinstance(fila, list)
-        
-        if len(fila) != len(sudoku):
-            return False
-    else:
-        return True
-
-#def is_number(sudoku):
-
-
-#def check_sudoku(sudoku):
-
+    return ( is_isquare(sudoku)
+            and is_integer(sudoku)
+            and number_in_range(sudoku)
+            and check_rows(sudoku)
+            and check_colums(sudoku)
+    )
 
 
 
 
 if __name__=='__main__':
-
-    assert is_squere(correcto)==True
-
-    assert is_squere(incorrecto_repeticion_numeros)==True
-
-    assert is_squere(incorrecto6)==False
 
     assert check_sudoku(incorrecto_repeticion_numeros)==False
     # >>> False
