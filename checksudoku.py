@@ -46,7 +46,81 @@ incorrecto6 = [[1, 0, 0, 0],
             [0, 1, 0],
             [0, 0, 0, 1]]
 
+def numbers_in_range(sudoku):
 
+    for row in sudoku:
+        for number in row:
+            if number>len(sudoku):
+                return False
+    else:
+        return True
+
+
+
+def is_squere(sudoku):
+    assert isinstance(sudoku,list)   
+
+    if not sudoku:
+        return False
+    for fila in sudoku: 
+
+        assert isinstance(fila, list)
+        
+        if len(fila) != len(sudoku):
+            return False
+    else:
+        return True
+
+
+
+def is_integrer(sudoku):
+    for row in sudoku:
+        for number in row:
+            if not isinstance(number, int):
+                return False
+    return True
+            
+
+
+def check_rows(sudoku):
+
+    for row in sudoku:
+        for number in row:
+            if row.count(number) > 1:
+                return False
+    return True
+
+
+
+def check_colums(sudoku):
+
+    primeraFila = sudoku[0]
+    numeroDeFilas = len(sudoku) - 1
+
+    for numero in primeraFila:
+
+        indexFilaActual = 0
+
+        while indexFilaActual < numeroDeFilas:
+
+            indexFilaSiguiente = indexFilaActual + 1
+
+            try:
+               
+                posicionNumeroFilaSiguiente = sudoku[indexFilaSiguiente].index(numero)
+
+            except ValueError:
+                     
+                      return False
+
+            else:
+              
+                if posicionNumeroFilaSiguiente == primeraFila.index(numero):
+                      return False
+                else:
+                      indexFilaActual += 1
+
+    return True
 
 def check_sudoku(sudoku):
 
@@ -61,6 +135,38 @@ def check_sudoku(sudoku):
 
 
 if __name__=='__main__':
+
+    assert numbers_in_range(correcto)==True
+    assert numbers_in_range(incorrecto_repeticion_fila)==True
+    assert numbers_in_range(incorrecto3)==False
+
+    assert is_squere(correcto)==True
+
+    assert is_squere(incorrecto_repeticion_fila)==True
+
+    assert is_squere(incorrecto_repeticion_numeros)==False
+    assert is_integrer(correcto)==True
+
+    assert is_integrer(incorrecto_repeticion_fila)==True
+
+    assert is_integrer(incorrecto_repeticion_fila)==True
+    # >>> False
+
+    assert check_rows(correcto)==True
+    assert check_rows(incorrecto_repeticion_fila)==False
+    assert check_rows(incorrecto_repeticion_columnas)==True
+
+    assert check_colums(incorrecto_repeticion_numeros)==False
+    # >>> False
+
+    assert check_colums(correcto)==True
+    # >>> True
+
+    assert check_colums(incorrecto2)==False
+    # >>> False
+    
+    assert check_colums(incorrecto3)==False
+    # >>> False
 
     assert check_sudoku(incorrecto_repeticion_numeros)==False
     # >>> False
