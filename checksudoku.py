@@ -22,28 +22,28 @@ correcto = [[1, 2, 3],
             [2, 3, 1],
             [3, 1, 2]]
 
-incorrecto_repeticion_numeros = [[1, 2, 3, 4],[2, 3, 1, 3],[3, 1, 2, 3],[4, 4, 4, 4]]
+incorrecto_repeticion_fila = [[1, 2, 3, 4],[2, 3, 1, 3],[3, 1, 2, 3],[4, 4, 4, 4]]
 
-incorrecto2 = [[1, 2, 3, 4],
+incorrecto_repeticion_columna = [[1, 2, 3, 4],
             [2, 3, 1, 4],
             [4, 1, 2, 3],
             [3, 4, 1, 2]]
 
-incorrecto3 = [[1, 2, 3, 4, 5],
+incorrecto_rango = [[1, 2, 3, 4, 5],
             [2, 3, 1, 5, 6],
             [4, 5, 2, 1, 3],
             [3, 4, 5, 2, 1],
             [5, 6, 4, 3, 2]]
 
-incorrecto4 = [['a', 'b', 'c'],
+incorrecto__no_enteros= [['a', 'b', 'c'],
             ['b', 'c', 'a'],
             ['c', 'a', 'b']]
 
-incorrecto5 = [[1, 1.5],
+incorrecto_flotantes = [[1, 1.5],
             [1.5, 1]]
 
-incorrecto6 = [[1, 0, 0, 0],
-            [0, 1, 0],
+incorrecto_longitud = [[1, 0, 0, 0],
+            [0, 1, 0, 0],
             [0, 0, 0, 1]]
 
 def numbers_in_range(sudoku):
@@ -57,8 +57,7 @@ def numbers_in_range(sudoku):
 
 
 
-def is_squere(sudoku):
-    assert isinstance(sudoku,list)   
+def is_squere(sudoku):  
 
     if not sudoku:
         return False
@@ -106,27 +105,27 @@ def check_colums(sudoku):
             indexFilaSiguiente = indexFilaActual + 1
 
             try:
-               
                 posicionNumeroFilaSiguiente = sudoku[indexFilaSiguiente].index(numero)
 
             except ValueError:
-                     
-                      return False
+                return False
 
             else:
-              
+            
                 if posicionNumeroFilaSiguiente == primeraFila.index(numero):
-                      return False
+                    return False
                 else:
-                      indexFilaActual += 1
+                    indexFilaActual += 1
 
     return True
 
 def check_sudoku(sudoku):
 
-    return ( is_isquare(sudoku)
-            and is_integer(sudoku)
-            and number_in_range(sudoku)
+    assert isinstance(sudoku,list) 
+
+    return ( is_squere(sudoku)
+            and is_integrer(sudoku)
+            and numbers_in_range(sudoku)
             and check_rows(sudoku)
             and check_colums(sudoku)
     )
@@ -138,13 +137,13 @@ if __name__=='__main__':
 
     assert numbers_in_range(correcto)==True
     assert numbers_in_range(incorrecto_repeticion_fila)==True
-    assert numbers_in_range(incorrecto3)==False
+    assert numbers_in_range(incorrecto_rango)==False
 
     assert is_squere(correcto)==True
 
     assert is_squere(incorrecto_repeticion_fila)==True
 
-    assert is_squere(incorrecto_repeticion_numeros)==False
+    assert is_squere(incorrecto_longitud)==False
     assert is_integrer(correcto)==True
 
     assert is_integrer(incorrecto_repeticion_fila)==True
@@ -154,37 +153,37 @@ if __name__=='__main__':
 
     assert check_rows(correcto)==True
     assert check_rows(incorrecto_repeticion_fila)==False
-    assert check_rows(incorrecto_repeticion_columnas)==True
+    assert check_rows(incorrecto_rango)==True
 
-    assert check_colums(incorrecto_repeticion_numeros)==False
+    assert check_colums(incorrecto_rango)==False
     # >>> False
 
     assert check_colums(correcto)==True
     # >>> True
 
-    assert check_colums(incorrecto2)==False
+    assert check_colums(incorrecto_repeticion_columna)==False
     # >>> False
     
-    assert check_colums(incorrecto3)==False
+    assert check_colums(incorrecto_rango)==False
     # >>> False
 
-    assert check_sudoku(incorrecto_repeticion_numeros)==False
+    assert check_sudoku(incorrecto_flotantes)==False
     # >>> False
 
     assert check_sudoku(correcto)==True
     # >>> True
 
-    assert check_sudoku(incorrecto2)==False
+    assert check_sudoku(incorrecto_repeticion_columna)==False
     # >>> False
 
-    assert check_sudoku(incorrecto3)==False
+    assert check_sudoku(incorrecto_rango)==False
     # >>> False
 
-    assert check_sudoku(incorrecto4)==False
+    assert check_sudoku(incorrecto__no_enteros)==False
     # >>> False
 
-    assert check_sudoku(incorrecto5)==False
+    assert check_sudoku(incorrecto_flotantes)==False
     # >>> False
 
-    assert check_sudoku(incorrecto6)==False
+    assert check_sudoku(incorrecto_longitud)==False
     # >>> False
