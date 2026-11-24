@@ -120,15 +120,18 @@ def check_colums(sudoku):
     return True
 
 def check_sudoku(sudoku):
+    
+    try:
+        assert isinstance(sudoku,list) 
 
-    assert isinstance(sudoku,list) 
-
-    return ( is_squere(sudoku)
+        return ( is_squere(sudoku)
             and is_integrer(sudoku)
             and numbers_in_range(sudoku)
             and check_rows(sudoku)
             and check_colums(sudoku)
     )
+    except:
+        return False
 
 
 
