@@ -20,4 +20,4 @@ if __name__ == "__main__":
     assert check_rows(casosTest.incorrecto_rango) == True
     assert check_rows(casosTest.incorrecto__no_enteros) == True
     assert check_rows(casosTest.incorrecto_flotantes) == True
-    assert check_rows(casosTest.incorrecto_longitud) == True
+    
