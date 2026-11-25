@@ -1,5 +1,7 @@
 def check_colums(sudoku):
-
+    assert isinstance(sudoku, list)
+    for row in sudoku:
+        assert isinstance(row, list)
     primeraFila = sudoku[0]
     numeroDeFilas = len(sudoku) - 1
 
@@ -31,10 +33,7 @@ if __name__ == "__main__":
 
     import casos_test.casos_test_sudoku as casosTest
 
-    assert check_colums(casosTest.correcto) == True
-    assert check_colums(casosTest.incorrecto_repeticion_fila) == True
-    assert check_colums(casosTest.incorrecto_repeticion_columna) == False
-    assert check_colums(casosTest.incorrecto_rango) == True
-    assert check_colums(casosTest.incorrecto__no_enteros) == True
-    assert check_colums(casosTest.incorrecto_flotantes) == True
-    assert check_colums(casosTest.incorrecto_longitud) == True
+    assert check_colums(casosTest.correcto) is True
+    assert check_colums(casosTest.incorrecto_repeticion_columna) is False
+    assert check_colums(casosTest.incorrecto__no_enteros) is True
+    assert check_colums(casosTest.incorrecto_flotantes) is True

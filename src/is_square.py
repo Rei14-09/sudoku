@@ -18,10 +18,10 @@ if __name__ == "__main__":
 
     import casos_test.casos_test_sudoku as casosTest
 
-    assert is_squere(casosTest.correcto) == True
-    assert is_squere(casosTest.incorrecto_repeticion_fila) == True
-    assert is_squere(casosTest.incorrecto_repeticion_columna) == True
-    assert is_squere(casosTest.incorrecto_rango) == True
-    assert is_squere(casosTest.incorrecto__no_enteros) == True
-    assert is_squere(casosTest.incorrecto_flotantes) == True
+    assert is_squere(casosTest.correcto) is True
+    assert is_squere(casosTest.incorrecto_repeticion_fila) is True
+    assert is_squere(casosTest.incorrecto_repeticion_columna) is True
+    assert is_squere(casosTest.incorrecto_rango) is True
+    assert is_squere(casosTest.incorrecto__no_enteros) is True
+    assert is_squere(casosTest.incorrecto_flotantes) is True
     assert is_squere(casosTest.incorrecto_longitud) == False
