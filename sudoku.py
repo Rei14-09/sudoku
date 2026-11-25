@@ -18,9 +18,6 @@
 # You may assume the the input is square and contains at
 # least one row and column.
 
-import sys
-
-sys.path.append("..")
 
 from src.is_square import is_squere
 from src.is_integer import is_integrer
@@ -30,25 +27,20 @@ from src.check_colums import check_colums
 
 
 def check_sudoku(sudoku):
-
-    try:
-        assert isinstance(sudoku, list)
-
-        return (
-            is_squere(sudoku)
-            and is_integrer(sudoku)
-            and numbers_in_range(sudoku)
-            and check_rows(sudoku)
-            and check_colums(sudoku)
-        )
-    except:
+    if not isinstance(sudoku, list):
         return False
+    
+       
+    return (
+        is_squere(sudoku)
+        and is_integrer(sudoku)
+        and numbers_in_range(sudoku)
+        and check_rows(sudoku)
+        and check_colums(sudoku)
+    )
 
 
 if __name__ == "__main__":
-    import sys
-
-    sys.path.append("..")
 
     import casos_test.casos_test_sudoku as casosTest
 
