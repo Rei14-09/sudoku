@@ -44,13 +44,13 @@ if __name__ == "__main__":
 
     import casos_test.casos_test_sudoku as casosTest
 
-    assert check_sudoku(casosTest.correcto) == True
-    assert check_sudoku(casosTest.incorrecto_repeticion_fila) == False
-    assert check_sudoku(casosTest.incorrecto_repeticion_columna) == False
-    assert check_sudoku(casosTest.incorrecto_rango) == False
-    assert check_sudoku(casosTest.incorrecto__no_enteros) == False
-    assert check_sudoku(casosTest.incorrecto_flotantes) == False
-    assert check_sudoku(casosTest.incorrecto_longitud) == False
+    assert check_sudoku(casosTest.correcto) is True
+    assert check_sudoku(casosTest.incorrecto_repeticion_fila) is False
+    assert check_sudoku(casosTest.incorrecto_repeticion_columna) is False
+    assert check_sudoku(casosTest.incorrecto_rango) is False
+    assert check_sudoku(casosTest.incorrecto__no_enteros) is False
+    assert check_sudoku(casosTest.incorrecto_flotantes) is False
+    assert check_sudoku(casosTest.incorrecto_longitud) is False
 
 
 
